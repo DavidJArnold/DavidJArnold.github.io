@@ -7,7 +7,7 @@ body {
 	padding: 0px;
 	background: #F1E9D4 url(images/bg01.jpg) repeat;
 	font-family: 'Open Sans', sans-serif;
-	font-size: 10pt;
+	font-size: 12pt;
 	color: #747474;
 }
 
@@ -19,10 +19,11 @@ h1, h2, h3 {
 
 p, ol, ul {
 	margin-top: 0px;
+	line-height: 140%;
 }
 
 p {
-	line-height: 180%;
+	line-height: 140%;
 }
 
 strong {
@@ -64,23 +65,27 @@ ul.style1
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	line-height: 180%;
 }
 
 ul.style1 li
 {
 	padding: 15px 0px 15px 0px;
 	border-top: 1px solid #E5E5E5;
+	line-height: 100%;
 }
 
 ul.style1 a
 {
 	color: #747474;
+	line-height: 100%;
 }
 
 ul.style1 .first
 {
 	padding-top: 0;
 	border-top: none;
+	line-height: 100%;
 }
 
 /** WRAPPER */
@@ -231,7 +236,7 @@ li a:hover, .dropdown:hover .dropbtn {
 
 #page {
 	overflow: hidden;
-	width: 700px;
+	width: 1000px;
 	margin-bottom: 3em;
 	padding: 5em 50px;
 	background: #FFF;
@@ -289,6 +294,7 @@ li a:hover, .dropdown:hover .dropbtn {
 	width: 250px;
 }
 */
+
 
 /** CONTENT */
 
