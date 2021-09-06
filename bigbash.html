@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-    <title>The evolution of Big Bash cricket</title>
+    <title>The Evolution of Big Bash Cricket</title>
     <meta charset="utf-8">
     <link rel=stylesheet href="default.css">
 </head>
@@ -20,29 +20,26 @@
 		</div>
 	</div>
 <div id="page" class="container">
-    <h1>The evolution of Big Bash cricket</h1>
-    <div id="intro">
+    <h1>The Evolution of Big Bash Cricket</h1>
+     <div id="intro">
         <!-- <h2>Introduction</h2> -->
-        <p>This page details my study of Big Bash cricket using data sourced from
-            <a href="https://cricsheet.org/" rel="external" target="_blank">cricsheet.org</a>. The code used for this
-            project can be found in the
-            <a href="https://github.com/DavidJArnold/CricketStats/" rel="external" target="_blank">CricketStats</a> GitHub repository.</p>
-        <p>I used ball-by-ball data from 414 games to study how innings progress from start to finish, as well as how Big Bash cricket has changed over it's 10 seasons.</p>
+        <p>This page describes my study of Big Bash cricket using data sourced from <a href="https://cricsheet.org/" rel="external" target="_blank">cricsheet.org</a>. The code used for this project can be found in the <a href="https://github.com/DavidJArnold/CricketStats/" rel="external" target="_blank">CricketStats</a> GitHub repository.</p>
+        <p>I used ball-by-ball data from 414 games to study how innings progress from start to finish, as well as how Big Bash cricket has changed over its 10 seasons.</p>
 
     </div>
 
     <img src="images/database_layout.png" width="364" height="383" style="float:right">
     <div id="method">
-        <h2>Methods</h2>
-        <p>This investigation used three technologies: Python, SQL, and Tableau. I used Python to parse the yaml files from CricSheet, extract and format the information, and then insert that data in a MySQL database.
-            The database has three tables, one for match information, one for information about each ball, and one for information about each wicket. The database layout and columns are shown to the right.
+        <h2>Method</h2>
+        <p>I used three tools in this project: Python, MySQL, and Tableau. I used Python to parse the yaml files from CricSheet, format the information, and then insert it into a MySQL database.
+            The database has three tables, one for information about each match, one for information about each ball, and one for information about each wicket. The database layout and field names are shown to the right.
         </p>
-    <p> I used MySQL workbench to directly query the database for exploratory research purposes, and once I found useful and interesting queries I wrote them into a Python file. The Python script extracted, processed, and saved output data in csv files, which I imported into Tableau to create the interactive dashboard that can be seen below.</p>
+    <p> I used MySQL workbench to directly query the database for exploratory analysis, and then rewrite useful and interesting queries into a Python script. The Python script extracted, processed, and saved output data in csv files which I imported into Tableau to create the interactive dashboard below.</p>
     </div>
 
     <div id="BBL_trends">
         <h2>Trends over BBL seasons</h2>
-        <p>A concise summary of some of the interesting findings from this project is shown the the Tableau dashboard embedded below. Information is separated by season of the Big Bash and over. You can also view the dashboard directly at <a href="https://public.tableau.com/views/BBL_RR/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link" rel="external" target="_blank">Tableau Public</a>. Discussion is given below.</p>
+        <p>Some of the interesting findings from this project are shown in the Tableau dashboard embedded below. Data are grouped by season and over number so that comparisons can be made, and you can click on a datapoint to isolate individual seasons. You can also view the dashboard directly at <a href="https://public.tableau.com/views/BBL_RR/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link" rel="external" target="_blank">Tableau Public</a>. Discussion is given below the dashboard.</p>
 
         <!-- Tableau embed code -->
         <div class='tableauPlaceholder' id='viz1630478423810' style='position: relative'>
@@ -83,31 +80,28 @@
             vizElement.parentNode.insertBefore(scriptElement, vizElement);
         </script>
     </div>
-
-        <p>The top-left panel shows average run-rate per by, separated by season. It is quite clear that across all seasons, teams start their innings quickly, then slow down and gradually build up momentum to finish with some high-scoring overs. The large drop in scoring after the first few overs is due to the end of the powerplay, a period at the start of the innings where the fielding team is restricted so runs are easier to score. A few specific things can be seen from this plot:
-        <ul><li>For Season 10, the initial powerplay was reduced from 6 overs, as it had been in previous seasons, to 4 overs. The effect can be seen clearly by isolating the Season 10 curve, where the drop happens after the 4th over.</li>
+	<p></p>
+    <p>The top-left panel shows average run-rate per over, separated by season. It is quite clear that across all seasons, teams start their innings quickly, then slow down after 4-6 overs and gradually build up momentum to finish with some high-scoring overs. The large drop in scoring after the first few overs is due to the end of the powerplay, a period at the start of the innings where fielding positions are restricted so runs are easier to score. A few specific features can be seen from this plot:</p>
+        <ul><li>For Season 10, the initial powerplay was reduced from six overs to four. The effect can be seen clearly by isolating the Season 10 curve, where the drop in scoring rate happens after the fourth over.</li>
         <li>Scoring was slower in the first few seasons (lighter lines), particularly at the start and end of the innings.</li>
         </ul>
-        </p>
         <p>
-        The top-right panel shows the proportion of wickets in a season that fell in each over, measured against the average uniform rate. A decreasing value means teams are losing wickets at less than the average rate, while an increasing value means they are losing wickets more quickly than average. The trend is quite clear, and once again some interesting variations can be seen:
+            The top-right panel shows the cumulative proportion of wickets that fell after each over, measured against the average rate. To explain this calculation, consider Season 1, where 10 wickets fell in the first over of an innings, and a total of 345 wickets fell. The wicket proportion for the first over is therefore 10/345=0.0290. The average rate would have teams losing an equal number of wickets each over, with wicket proportion 1/20=0.05 in every over. The first over in Season 1 therefore has a wicket proportion 0.021 lower than the average rate. A decreasing value on the plot means teams are losing wickets at less than the average rate (conserving their wickets), while an increasing value means they are losing wickets more quickly. The trend is quite clear, and once again some interesting variations can be seen:</p>
         <ul>
-            <li>In Season 1, teams were more protective of their wickets early in the innings, with wickets falling at a significantly slower rate. Their innings were less balanced---tending to lost many wickets late, presumably while taking extra risk to score more quickly.</li>
-        <li>As the seasons have progressed, teams seem to have become comfortable losing wickets at a faster rate. Despite this, it is still around the same point in the innings, roughly the 13th over, where they start to dramatically increase risk levels.</li>
+            <li>In Season 1, teams were more protective of their wickets early in the innings, with wickets falling at a significantly slower rate. Their innings' were less balanced---taking little risk and scoring slowly at first then losing many wickets late, presumably while taking lots of risk to score very quickly.</li>
+        <li>In later seasons, teams seem to have become comfortable losing wickets at a faster rate early in their innings. Despite this, it is still around the same point in the innings, roughly the 13th over, where they start to dramatically increase risk levels.</li>
     </ul>
-        </p>
 
 
-    <p>The bottom panel compares run-rate against wicket proportion for each over in each season. The symbols get darker as the overs progress, and the symbols are different for each season. This is a particularly interesting plot because it helps visualise the risk/reward tradeoff as mentioned previously. Scoring more runs in an over (moving higher on the plot) correlates to an increases risk of dismissal (moving to the right on the plot). Some of the trends identified previously can be seen here as well, the darker symbols to the rop-right of the plot correspond to the late overs, where teams take big risks to score runs quickly.
+    <p>The bottom panel compares run-rate against wicket proportion for each over in each season. The symbols darken with increasing over number and are a different shape for each season. This is a particularly interesting plot because it helps visualise the risk/reward tradeoff mentioned previously. Scoring more runs in an over (moving up on the plot) correlates with an increased risk of dismissal (moving to the right on the plot). Some of the trends identified previously can be seen here as well, for example the darker symbols to the rop-right of the plot (corresponding to the late overs) show where teams take big risks to score runs quickly.</p>
 
-        You can select individual seasons to get a closer look at the data. In later seasons, the maximum wicket proportions actually fall while the maximum run-rates stay fairly stable. This shows that batters have been able to evolve their approach to more efficiently score runs quickly at the end of the innings. Put another way, they get more value for taking risk.
+        <p>You can select individual seasons to get a closer look at the data, by clicking on a datapoint or in the legend. In later seasons, the maximum wicket proportions actually fall while the maximum run-rates stay fairly stable. This shows batters have evolved their approach to more safely score runs quickly at the end of the innings. Put another way, they get more value for taking risk.
     </p>
     <p>
-        The way Big Bash cricket is played has definitely changed over the seasons. Batters have adapted to the extremely short format and have learned to place less value on their wickets and more value on consistent scoring through the innings. They are also more able to score runs quickly at the end of the innings without taking as many risks.
+        The way Big Bash cricket is played has definitely changed over the seasons. Batters have adapted to the extremely short format and have learned to place less value on their wickets and more value on consistent scoring through the innings. They are also able to score runs more quickly at the end of the innings without losing wickets so quickly, suggesting improved strategies and shot selection.
     </p>
 </div>
 
-</div>
 
 <div id="footer" class="container">
     <p>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. </p>
